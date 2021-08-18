@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #2b2b2b;
+    position: relative;
+}
+
+header .logo {
+    background-image: url("../img/logo.png");
+    width: 131px;
+    height: 45px;
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    opacity: .9;
+}
+
+header .logo:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 765px) {
+    header .logo {
+        display: none;
+    }
+}
+
+nav {
+    margin: auto;
+    text-align: center;
+    color: #838383;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+nav div {
+    border-left: 1px solid #585858;
+    padding: 2vh;
+    cursor: pointer;
+}
+
+nav div:hover {
+    background-color: #dd7d00;
+    color: #1d1d1d;
+}
+
+nav div:last-child {
+    border-right: 1px solid #585858;
+}
+
+nav div svg {
+    padding-left: .8vh;
+}
+
+nav .active {
+    background-color: #dd7d00;
+    color: #1d1d1d;
+}
+
+.flexbox-container {
+    display: flex;
+    width: 456px;
+    flex-wrap: wrap;
+    border: 1px solid #000000;
+    margin: 10vh auto;
+}
+
+.flexbox-container div {
+    background-color: #ffffff;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000000;
+}
+
+.flexbox-container div:nth-child(odd) {
+    background-color: black;
+}
+
+@media screen and (max-width: 550px) {
+    .flexbox-container {
+        width: 306px;
+    }
+    .flexbox-container div {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .flexbox-container {
+        width: 156px;
+    }
+    .flexbox-container div {
+        width: 50px;
+        height: 50px;
+    }
+}

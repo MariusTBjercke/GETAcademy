@@ -1,0 +1,16 @@
+{
+  "name": "ga-week2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node-sass sass/main.scss css/main.css -w --output-style compressed"
+  },
+  "author": "Marius Bjercke",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "jquery": "^3.6.0"
+  }
+}
