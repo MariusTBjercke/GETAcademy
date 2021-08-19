@@ -65,7 +65,7 @@ nav .active {
 
 .flexbox-container {
     display: flex;
-    width: 456px;
+    width: 450px;
     flex-wrap: wrap;
     border: 1px solid #000000;
     margin: 10vh auto;
@@ -75,7 +75,6 @@ nav .active {
     background-color: #ffffff;
     width: 150px;
     height: 150px;
-    border: 1px solid #000000;
 }
 
 .flexbox-container div:nth-child(odd) {
