@@ -14,7 +14,6 @@ $(function() {
     background.src = "img/magic-cliffs/clouds.png";
 
     const startGameBtn = document.querySelector('#startGameBtn');
-    const modalEl = document.querySelector('#modalEl');
 
     var worldWidth = 2000;
 
@@ -26,7 +25,7 @@ $(function() {
     const friction = 0.94;
     const gravity = 0.5;
     const playerSpeed = 0.2;
-    var playerJumpForce = 15;
+    var playerJumpForce = 25;
     var playerStance = 0;
     var walkInterval;
     var timer = false;
@@ -49,8 +48,8 @@ $(function() {
             y: y,
             vx: 0,
             vy: gravity,
-            width: 53,
-            height: 121,
+            width: 72,
+            height: 122,
             jumping: false
         };
         projectiles = [];
@@ -98,7 +97,7 @@ $(function() {
                 playerDrawn = true;
                 ctx.save();
                 ctx.scale(-1, 1);
-                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width, player.y, 72, 122);
                 ctx.restore();
             } else if (keyRight && !playerDrawn) {
                 playerDrawn = true;
@@ -108,7 +107,7 @@ $(function() {
                 playerDrawn = true;
                 ctx.save();
                 ctx.scale(-1, 1);
-                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width, player.y, 72, 122);
                 ctx.restore();
             } else if (faceRight && !playerDrawn) {
                 playerDrawn = true;
@@ -120,7 +119,7 @@ $(function() {
                 if (playerStance === itemIndex) {
                     ctx.save();
                     ctx.scale(-1, 1);
-                    ctx.drawImage(playerWalk, item.frame.x, item.frame.y, item.frame.w, item.frame.h, -player.x - player.width - player.width / 2, player.y, item.frame.w, item.frame.h);
+                    ctx.drawImage(playerWalk, item.frame.x, item.frame.y, item.frame.w, item.frame.h, -player.x - player.width, player.y, item.frame.w, item.frame.h);
                     ctx.restore();
                 }
             });
@@ -139,7 +138,7 @@ $(function() {
             if (faceLeft) {
                 ctx.save();
                 ctx.scale(-1, 1);
-                ctx.drawImage(playerWalk, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.drawImage(playerWalk, 0, 0, 72, 122, -player.x - player.width, player.y, 72, 122);
                 ctx.restore();
             } else {
                 ctx.drawImage(playerWalk, 0, 0, 72, 122, player.x, player.y, 72, 122);
@@ -325,46 +324,61 @@ $(function() {
             player.vy = 0;
         }
 
-        var islandObjects = [
+        var brickObjects = [
             {
-                "x": 120,
+                "x": 260,
                 "y": 330,
-                "width": 98,
-                "height": 76
+                "width": 60,
+                "height": 60
             },
             {
                 "x": 320,
-                "y": 350,
-                "width": 98,
-                "height": 76
+                "y": 330,
+                "width": 60,
+                "height": 60
             },
             {
-                "x": 500,
-                "y": 310,
-                "width": 98,
-                "height": 76
+                "x": 380,
+                "y": 330,
+                "width": 60,
+                "height": 60
             },
             {
-                "x": 680,
-                "y": 280,
-                "width": 98,
-                "height": 76
+                "x": 440,
+                "y": 330,
+                "width": 60,
+                "height": 60
+            },
+            {
+                "x": 560,
+                "y": 330,
+                "width": 60,
+                "height": 60
             }
         ];
 
-        for (var i = 0; i < islandObjects.length; i++) {
+        var mysteryBoxObjects = [
+            {
+                "x": 500,
+                "y": 330,
+                "width": 60,
+                "height": 60
+            }
+        ]
 
-            islandObjects[i]['name'] = new Island(islandObjects[i]['x'], islandObjects[i]['y'], islandObjects[i]['width'], islandObjects[i]['height']);
-            islandObjects[i]['name'].draw(ctx);
+        for (var i = 0; i < brickObjects.length; i++) {
 
-            doCollision(player, islandObjects[i]['name']);
+            brickObjects[i]['name'] = new Brick(brickObjects[i]['x'], brickObjects[i]['y'], brickObjects[i]['width'], brickObjects[i]['height']);
+            brickObjects[i]['name'].draw(ctx);
+
+            doCollision(player, brickObjects[i]['name']);
 
             enemyObjects.forEach((enemy, enemyIndex) => {
 
-                doCollision(enemy, islandObjects[i]['name']);
+                doCollision(enemy, brickObjects[i]['name']);
                 doCollision(enemy, player);
 
-                // Ground collision
+                // Enemy ground collision
                 if (getOverlap(enemy, ground) && enemy.y <= ground.y) {
                     enemy.y = ground.y - enemy.height;
                     enemy.vy = 0;
@@ -374,13 +388,14 @@ $(function() {
 
         }
 
-        // const dist = calcDistance(player, enemy);
+        for (var i = 0; i < mysteryBoxObjects.length; i++) {
 
-        // End game
-        // if (dist - enemy.width < 1) {
-        //     cancelAnimationFrame(animationId);
-        //     modalEl.style.display = 'block';
-        // }
+            mysteryBoxObjects[i]['name'] = new MysteryBox(mysteryBoxObjects[i]['x'], mysteryBoxObjects[i]['y'], mysteryBoxObjects[i]['width'], mysteryBoxObjects[i]['height']);
+            mysteryBoxObjects[i]['name'].draw(ctx);
+
+            doCollision(player, mysteryBoxObjects[i]['name']);
+
+        }
 
     }
 

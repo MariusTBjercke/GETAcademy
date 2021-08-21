@@ -131,9 +131,9 @@ class Ground {
     }
 }
 
-var islandImg = new Image();
-islandImg.src = "img/magic-cliffs/island.png";
-class Island {
+var brickImg = new Image();
+brickImg.src = "img/environment/brick.png";
+class Brick {
     constructor(x, y, width, height) {
         this.x = x;
         this.y = y;
@@ -142,6 +142,21 @@ class Island {
     }
 
     draw(ctx) {
-        ctx.drawImage(islandImg, this.x, this.y, this.width, this.height);
+        ctx.drawImage(brickImg, this.x, this.y, this.width, this.height);
+    }
+}
+
+var mysteryBoxImg = new Image();
+mysteryBoxImg.src = "img/environment/mystery-box.png";
+class MysteryBox {
+    constructor(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    draw(ctx) {
+        ctx.drawImage(mysteryBoxImg, this.x, this.y, this.width, this.height);
     }
 }
