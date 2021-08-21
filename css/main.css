@@ -63,6 +63,11 @@ nav .active {
     color: #1d1d1d;
 }
 
+nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .flexbox-container {
     display: flex;
     width: 450px;
