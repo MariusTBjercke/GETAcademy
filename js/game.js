@@ -4,6 +4,9 @@ $(function() {
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext("2d");
 
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
     canvas.width = 800;
     canvas.height = 600;
 
@@ -30,8 +33,6 @@ $(function() {
     var move;
     var faceLeft = false;
     var faceRight = true;
-
-    var wearBunnyEars = false;
 
     const x = canvas.width / 2;
     const y = canvas.height / 2;
@@ -64,14 +65,6 @@ $(function() {
                 "health": 100
             },
         ];
-        bunnyObjects = [
-            {
-                x: 705,
-                y: 510,
-                width: 45,
-                height: 54
-            },
-        ];
         bitcoinObjects = [
             {
                 x: 357,
@@ -91,14 +84,10 @@ $(function() {
         bitcoins = 0;
     }
 
-    let playerWalkRight = new Image();
-    playerWalkRight.src = "img/player/walk-right.png";
-    let playerWalkLeft = new Image();
-    playerWalkLeft.src = "img/player/walk-left.png";
-    let playerJumpLeft = new Image();
-    playerJumpLeft.src = "img/player/jump-left.png";
-    let playerJumpRight = new Image();
-    playerJumpRight.src = "img/player/jump-right.png";
+    let playerWalk = new Image();
+    playerWalk.src = "img/player/player-walk.png";
+    let playerJump = new Image();
+    playerJump.src = "img/player/player-jump.png";
     function drawPlayer(ctx) {
 
         var playerDrawn = false;
@@ -107,46 +96,58 @@ $(function() {
         if (keyUp) {
             if (keyLeft && !playerDrawn) {
                 playerDrawn = true;
-                ctx.drawImage(playerJumpLeft, 0, 0, 56, 121, player.x, player.y, 56, 121);
+                ctx.save();
+                ctx.scale(-1, 1);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.restore();
             } else if (keyRight && !playerDrawn) {
                 playerDrawn = true;
-                ctx.drawImage(playerJumpRight, 0, 0, 56, 121, player.x, player.y, 56, 121);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, player.x, player.y, 72, 122);
             }
             if (faceLeft && !playerDrawn) {
                 playerDrawn = true;
-                ctx.drawImage(playerJumpLeft, 0, 0, 56, 121, player.x, player.y, 56, 121);
+                ctx.save();
+                ctx.scale(-1, 1);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.restore();
             } else if (faceRight && !playerDrawn) {
                 playerDrawn = true;
-                ctx.drawImage(playerJumpRight, 0, 0, 56, 121, player.x, player.y, 56, 121);
+                ctx.drawImage(playerJump, 0, 0, 72, 122, player.x, player.y, 72, 122);
             }
         } else if (keyLeft) {
             move = true;
-            playerWalkLeftData.frames.forEach((item, itemIndex) => {
+            playerWalkData.frames.forEach((item, itemIndex) => {
                 if (playerStance === itemIndex) {
-                    ctx.drawImage(playerWalkLeft, item.frame.x, item.frame.y, item.frame.w, item.frame.h, player.x, player.y, item.frame.w, item.frame.h);
+                    ctx.save();
+                    ctx.scale(-1, 1);
+                    ctx.drawImage(playerWalk, item.frame.x, item.frame.y, item.frame.w, item.frame.h, -player.x - player.width - player.width / 2, player.y, item.frame.w, item.frame.h);
+                    ctx.restore();
                 }
             });
             faceLeft = true;
             faceRight = false;
         } else if (keyRight) {
             move = true;
-            playerWalkRightData.frames.forEach((item, itemIndex) => {
+            playerWalkData.frames.forEach((item, itemIndex) => {
                 if (playerStance === itemIndex) {
-                    ctx.drawImage(playerWalkRight, item.frame.x, item.frame.y, item.frame.w, item.frame.h, player.x, player.y, item.frame.w, item.frame.h);
+                    ctx.drawImage(playerWalk, item.frame.x, item.frame.y, item.frame.w, item.frame.h, player.x, player.y, item.frame.w, item.frame.h);
                 }
             });
             faceLeft = false;
             faceRight = true;
         } else {
             if (faceLeft) {
-                ctx.drawImage(playerWalkLeft, 0, 0, 53, 121, player.x, player.y, 53, 121);
+                ctx.save();
+                ctx.scale(-1, 1);
+                ctx.drawImage(playerWalk, 0, 0, 72, 122, -player.x - player.width - player.width / 2, player.y, 72, 122);
+                ctx.restore();
             } else {
-                ctx.drawImage(playerWalkRight, 0, 0, 53, 121, player.x, player.y, 53, 121);
+                ctx.drawImage(playerWalk, 0, 0, 72, 122, player.x, player.y, 72, 122);
             }
         }
 
         if (move && !timer) {
-            walkInterval = setInterval(changeStance, 120);
+            walkInterval = setInterval(changeStance, 50);
             timer = true;
         }
 
@@ -243,10 +244,10 @@ $(function() {
 
     }
 
+    var bitcoinImg = new Image();
+    bitcoinImg.src = "img/coin/coin-spritesheet.png";
     function spawnBitcoins() {
         bitcoinObjects.forEach((bitcoin, bitcoinIndex) => {
-            let bitcoinImg = new Image();
-            bitcoinImg.src = "img/coin/coin-spritesheet.png";
 
             drawBitcoinAnim(bitcoin, bitcoinImg);
 
@@ -271,33 +272,10 @@ $(function() {
     }
 
     function drawBitcoinIcon() {
-        let bitcoinImg = new Image();
-        bitcoinImg.src = "img/coin/coin-spritesheet.png";
-
         ctx.save();
         ctx.resetTransform();
         ctx.drawImage(bitcoinImg, 0, 0, 50, 50, 10, 40, 25, 25);
         ctx.restore();
-    }
-
-    function SpawnBunnyEars() {
-
-        bunnyObjects.forEach((bunnyEars, bunnyEarsIndex) => {
-
-            bunnyEars = new BunnyEars(bunnyEars.x, bunnyEars.y, bunnyEars.width, bunnyEars.height);
-            bunnyEars.draw(ctx);
-
-            const distX = bunnyEars.x - player.x;
-            const distY = bunnyEars.y - player.y;
-
-            if (distX <= bunnyEars.width && player.x <= bunnyEars.x + bunnyEars.width) {
-                if (distY <= bunnyEars.height && player.y <= bunnyEars.y + bunnyEars.height) {
-                    wearBunnyEars = true;
-                }
-            }
-
-        });
-
     }
 
     function drawSkeleton(enemy) {
@@ -408,7 +386,7 @@ $(function() {
 
     function changeStance() {
         playerStance++;
-        if (playerStance > 7) {
+        if (playerStance > 17) {
             playerStance = 0;
         }
     }
@@ -644,31 +622,6 @@ $(function() {
 
     }
 
-    function updateBunnyEars() {
-
-        if (wearBunnyEars) {
-            var bunnyIcon = new BunnyEars(canvas.width - 35, 10, 25, 30);
-            bunnyIcon.drawIcon(ctx);
-            playerJumpForce = 30;
-        }
-
-        // Place bunny ears on character head
-        setTimeout(() => {
-            bunnyObjects.forEach((bunnyEars, bunnyEarsIndex) => {
-                if (wearBunnyEars) {
-                    if (faceRight || keyRight) {
-                        bunnyEars.x = player.x + 5;
-                        bunnyEars.y = player.y - 40;
-                    } else if (faceLeft || keyLeft) {
-                        bunnyEars.x = player.x + 35;
-                        bunnyEars.y = player.y - 40;
-                    }
-                }
-            });
-        }, 0);
-
-    }
-
     function animate() {
         animationId = requestAnimationFrame(animate);
         ctx.save();
@@ -688,10 +641,6 @@ $(function() {
 
         // Spawn bitcoin
         spawnBitcoins();
-
-        // Bunny ears
-        SpawnBunnyEars();
-        updateBunnyEars();
 
         // Spawn enemies in world
         spawnEnemies();

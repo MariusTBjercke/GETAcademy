@@ -145,27 +145,3 @@ class Island {
         ctx.drawImage(islandImg, this.x, this.y, this.width, this.height);
     }
 }
-
-var bunnyEarsImg = new Image();
-bunnyEarsImg.src = "img/bunny-ears/bunny-ears.png";
-class BunnyEars {
-    constructor(x, y, width, height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-    }
-
-    draw(ctx) {
-        ctx.save();
-        ctx.drawImage(bunnyEarsImg, this.x, this.y, this.width, this.height);
-        ctx.restore();
-    }
-
-    drawIcon(ctx) {
-        ctx.save();
-        ctx.resetTransform();
-        ctx.drawImage(bunnyEarsImg, this.x, this.y, this.width, this.height);
-        ctx.restore();
-    }
-}
