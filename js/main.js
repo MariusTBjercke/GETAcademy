@@ -1,6 +1,6 @@
 $(function() {
 
-    // Logo and navigation functionalities
+    // Logo and navigation functionalities START
 
     $(".logo").on("click", function() {
         window.location.href = "index.html";
@@ -27,8 +27,24 @@ $(function() {
         });
     });
 
-    // Other
+    // Dropdown menu START
 
-    // TODO: Add stuff I guess
+    $("#spill, #spill-submenu").on("mouseover", function() {
+        $("#spill-submenu").show();
+    });
+
+    $("#spill, #spill-submenu").on("mouseleave", function() {
+        $("#spill-submenu").hide();
+    });
+
+    var headerHeight = $("#spill").height() - 1;
+
+    $("#spill-submenu").css({
+        "margin-top": headerHeight,
+    });
+
+    // Dropdown menu END
+
+    // Logo and navigation END
 
 });

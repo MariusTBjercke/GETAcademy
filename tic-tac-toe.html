@@ -11,9 +11,9 @@
     <header>
         <div class="logo"></div>
         <nav>
-            <div class="active"><a href="index.html">HJEM<i class="fas fa-home"></i></a></div>
+            <div><a href="index.html">HJEM<i class="fas fa-home"></i></a></div>
             <div>OM MEG<i class="fas fa-address-card"></i></div>
-            <div id="spill">
+            <div id="spill" class="active">
                 <span>SPILL<i class="fas fa-gamepad"></i></a></span>
                 <div id="spill-submenu">
                     <div><a href="js-game.html">Mario</a></div>
@@ -26,17 +26,25 @@
 
     <section>
 
+        <h1>Tic Tac Toe!</h1>
+        <h2>Score tre på rad - trykk på et felt for å begynne.</h2>
+
         <div class="flexbox-container">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div data-cell-index="0"></div>
+            <div data-cell-index="1"></div>
+            <div data-cell-index="2"></div>
+            <div data-cell-index="3"></div>
+            <div data-cell-index="4"></div>
+            <div data-cell-index="5"></div>
+            <div data-cell-index="6"></div>
+            <div data-cell-index="7"></div>
+            <div data-cell-index="8"></div>
         </div>
+
+        <h2 id="game-status"></h2>
+
+        <h2>Ønsker du å resette brettet?</h2>
+        <button class="game-restart">Restart</button>
 
     </section>
 
@@ -46,5 +54,6 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/tic-tac-toe.js"></script>
 </body>
 </html>
