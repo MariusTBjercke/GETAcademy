@@ -1,0 +1,48 @@
+section {
+    padding: 10vh;
+}
+
+#calculator {
+
+}
+
+#calculator #output {
+    border: 1px solid #000000;
+    display: inline-block;
+    min-width: 97px;
+    margin: 2px;
+}
+
+#buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 106px;
+}
+
+#buttons span {
+    padding: 10px;
+    background-color: #cccccc;
+    border: 1px solid #000000;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#buttons span:hover {
+    background-color: #979797;
+}
+
+#operators {
+    margin: 20px 0 0 2px;
+}
+
+#operators span {
+    padding: 10px;
+    background-color: #cccccc;
+    border: 1px solid #000000;
+    cursor: pointer;
+}
+
+#operators span:hover {
+    background-color: #979797;
+}
+

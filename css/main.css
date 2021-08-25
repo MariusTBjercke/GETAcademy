@@ -6,7 +6,6 @@ body {
 
 header {
     background-color: #2b2b2b;
-    position: relative;
 }
 
 header .logo {
@@ -68,26 +67,27 @@ nav a {
     color: inherit;
 }
 
-nav #spill {
+nav #projects {
     position: relative;
 }
 
-nav #spill-submenu {
+nav #projects-submenu {
     display: none;
     border: none;
     position: absolute;
-    left: 0;
     padding: 0;
+    top: 0;
+    left: 0;
     background-color: #2b2b2b;
     color: #838383;
 }
 
-nav #spill-submenu div {
+nav #projects-submenu div {
     border: none;
     border-bottom: 1px solid;
 }
 
-nav #spill-submenu div:first-child {
+nav #projects-submenu div:first-child {
     border-top: 1px solid;
 }
 
@@ -95,7 +95,6 @@ nav #spill-submenu div:first-child {
     display: flex;
     width: 450px;
     flex-wrap: wrap;
-    margin: 2vh auto;
     border: 1px solid #000000;
 }
 
@@ -142,7 +141,8 @@ nav #spill-submenu div:first-child {
     }
 }
 
-section {
-    max-width: 450px;
+main {
+    max-width: 960px;
     margin: auto;
+    padding: 20px;
 }

@@ -4,28 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marius Bjercke</title>
+    <title>Marius Bjercke | Spill</title>
     <link rel="icon" href="img/favicon.png">
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
-    <style>
-        #startGameBtn{background:blue;color:white;padding:20px;width:120px;position:absolute;left:50%;right:50%;top:50%;margin:auto}
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
 </head>
-<body>
+<body id="projects">
 <header></header>
 
-<section class="main-content">
+<main>
 
     <h1>JavaScript spill (Vanilla)</h1>
 
     <canvas id="gameCanvas"></canvas>
     <button id="startGameBtn">Start Game</button>
 
-</section>
+</main>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="js/game.js"></script>
-<script src="js/game-classes.js"></script>
-<script src="js/game-anim-data.js"></script>
+<script src="node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/game/game.js"></script>
+<script src="js/game/game-classes.js"></script>
+<script src="js/game/game-anim-data.js"></script>
 </body>
 </html>
