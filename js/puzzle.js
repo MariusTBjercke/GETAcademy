@@ -2,6 +2,9 @@ $(function() {
 
     let puzzleCounter = 0;
 
+    let selectedPiece;
+    let selectedSquare;
+
     let puzzlePiecesLocations = [
         {
             x: 0,
@@ -43,18 +46,33 @@ $(function() {
 
     let puzzles = document.querySelectorAll("#puzzle-container div");
 
-    // Rotate random puzzle pieces
+    // Rotate and onclick event
     var pieces = document.querySelectorAll("#puzzle-pieces div");
     pieces.forEach((piece, pieceIndex) => {
         let randomNumber = Math.floor(Math.random() * 360);
-        piece.style.transform = `rotate(${randomNumber}deg)`;
+        piece.style.transform = `scale(0.8) rotate(${randomNumber}deg)`;
 
         piece.onclick = function() {
-            puzzles[puzzleCounter].style.background = piece.style.background;
-            puzzleCounter++;
+            if (!(puzzleCounter === 9)) { 
+                // puzzles[puzzleCounter].style.background = piece.style.background;
+                piece.style.border = '1px solid #000000';
+                selectedPiece = piece;
+                puzzleCounter++;
+            }
         }
 
     });
+
+    // Second click event, place the puzzle piece
+    puzzles.forEach(puzzle => {
+        puzzle.onclick = function() {
+            if (selectedPiece) {
+            puzzle.style.background = selectedPiece.style.background;
+            selectedPiece.style.border = '';
+            selectedPiece = '';
+            }
+        }
+    })
 
     var ranNums = shuffle([0,1,2,3,4,5,6,7,8]);
 
@@ -83,6 +101,7 @@ $(function() {
         return array;
     }
 
+    // Reset puzzle
     document.getElementById("reset").onclick = function() {
         puzzles.forEach(puzzle => {
             puzzle.style.background = '';

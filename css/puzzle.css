@@ -1,3 +1,7 @@
+h1 {
+    font-family: 'Raleway', sans-serif;
+}
+
 #puzzle-container {
     display: grid;
     grid-template-rows: auto auto auto;
@@ -13,8 +17,14 @@
     transition: height 1s, width 1s;
 }
 
+#puzzle-container div:hover {
+    cursor: pointer;
+}
+
 #puzzle-pieces-wrapper {
     position: relative;
+    top: -500px;
+    left: 450px;
 }
 
 #puzzle-pieces {
@@ -36,6 +46,22 @@
 
 #puzzle-pieces div:hover {
     border: 1px solid #000000;
+    cursor: pointer;
+}
+
+#reset {
+    padding: .5vh;
+    width: 100px;
+    background-color: #dd7d00;
+    border: 1px solid #000000;
+    color: #000000;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.4em;
+    margin: 20px 0 0 2px;
+}
+
+#reset:hover {
+    background-color: #f58b00;
     cursor: pointer;
 }
 
