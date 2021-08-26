@@ -66,6 +66,8 @@ $(function() {
                 puzzle.style.background = selectedPiece.style.background;
                 selectedPiece.style.border = '';
                 selectedPiece = '';
+            } else {
+                puzzle.style.background = '';
             }
         }
     })
