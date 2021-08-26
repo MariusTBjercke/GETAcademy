@@ -82,7 +82,7 @@ $(function() {
         pieces[ranNums[i]].style.top = puzzlePiecesLocations[i]['y'] + 'px';
     }
 
-    // Fisher-Yates Shuffle
+    // Since no use of jQuery, use Fisher-Yates Shuffle
     function shuffle(array) {
         var i = array.length,
             j = 0,
