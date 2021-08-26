@@ -1,7 +1,5 @@
 $(function() {
 
-    let puzzleCounter = 0;
-
     let selectedPiece;
 
     let puzzlePiecesLocations = [
@@ -55,11 +53,8 @@ $(function() {
             if (selectedPiece) {
                 selectedPiece.style.border = '';
             }
-            if (!(puzzleCounter === 9)) { 
-                piece.style.border = '1px solid #000000';
-                selectedPiece = piece;
-                puzzleCounter++;
-            }
+            piece.style.border = '1px solid #000000';
+            selectedPiece = piece;
         }
 
     });
@@ -107,9 +102,6 @@ $(function() {
         puzzles.forEach(puzzle => {
             puzzle.style.background = '';
         });
-
-        puzzleCounter = 0;
     }
-        
 
 })
