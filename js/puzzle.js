@@ -3,7 +3,6 @@ $(function() {
     let puzzleCounter = 0;
 
     let selectedPiece;
-    let selectedSquare;
 
     let puzzlePiecesLocations = [
         {
@@ -53,8 +52,10 @@ $(function() {
         piece.style.transform = `scale(0.8) rotate(${randomNumber}deg)`;
 
         piece.onclick = function() {
+            if (selectedPiece) {
+                selectedPiece.style.border = '';
+            }
             if (!(puzzleCounter === 9)) { 
-                // puzzles[puzzleCounter].style.background = piece.style.background;
                 piece.style.border = '1px solid #000000';
                 selectedPiece = piece;
                 puzzleCounter++;
@@ -67,9 +68,9 @@ $(function() {
     puzzles.forEach(puzzle => {
         puzzle.onclick = function() {
             if (selectedPiece) {
-            puzzle.style.background = selectedPiece.style.background;
-            selectedPiece.style.border = '';
-            selectedPiece = '';
+                puzzle.style.background = selectedPiece.style.background;
+                selectedPiece.style.border = '';
+                selectedPiece = '';
             }
         }
     })

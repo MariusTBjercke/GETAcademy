@@ -80,6 +80,7 @@ nav #projects-submenu {
     left: 0;
     background-color: #2b2b2b;
     color: #838383;
+    z-index: 1;
 }
 
 nav #projects-submenu div {
