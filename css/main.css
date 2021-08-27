@@ -92,54 +92,13 @@ nav #projects-submenu div:first-child {
     border-top: 1px solid;
 }
 
-.flexbox-container {
-    display: flex;
-    width: 450px;
-    flex-wrap: wrap;
-    border: 1px solid #000000;
+.front-banners {
+    max-width: 960px;
+    margin: auto;
 }
 
-.flexbox-container div {
-    background-color: #ffffff;
-    width: 150px;
-    height: 150px;
-    font-family: "Permanent Marker", cursive;
+.front-banners:hover {
     cursor: pointer;
-    line-height: 150px;
-    text-align: center;
-    font-size: 6em;
-}
-
-.flexbox-container div:hover {
-    background-color: #dd7d00 !important;
-}
-
-.flexbox-container div:nth-child(odd) {
-    background-color: rgb(100, 100, 100);
-}
-
-@media screen and (max-width: 550px) {
-    .flexbox-container {
-        width: 306px;
-    }
-    .flexbox-container div {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        font-size: 4em;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .flexbox-container {
-        width: 156px;
-    }
-    .flexbox-container div {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        font-size: 2em;
-    }
 }
 
 main {

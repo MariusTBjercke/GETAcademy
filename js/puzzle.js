@@ -1,6 +1,7 @@
 $(function() {
 
     let selectedPiece;
+    let rotationNumber;
 
     let puzzlePiecesLocations = [
         {
@@ -46,15 +47,18 @@ $(function() {
     // Rotate and onclick event
     var pieces = document.querySelectorAll("#puzzle-pieces div");
     pieces.forEach((piece, pieceIndex) => {
-        let randomNumber = Math.floor(Math.random() * 360);
-        piece.style.transform = `scale(0.8) rotate(${randomNumber}deg)`;
+        let randomNumber = Math.round(10*Math.floor(Math.random() * 360));
+        piece.style.transform = `rotate(${randomNumber}deg)`;
 
         piece.onclick = function() {
             if (selectedPiece) {
                 selectedPiece.style.border = '';
+                selectedPiece = '';
+            } else {
+                rotationNumber = parseInt(piece.style.transform.replace(/[^0-9]/g,''));
+                selectedPiece = piece;
+                selectedPiece.style.border = "1px solid #000000";
             }
-            piece.style.border = '1px solid #000000';
-            selectedPiece = piece;
         }
 
     });
@@ -105,5 +109,40 @@ $(function() {
             puzzle.style.background = '';
         });
     }
+
+    addEventListener("mousemove", function(e) {
+        if (selectedPiece) {
+            let posX = e.pageX - mainOffsetLeft + 'px';
+            let posY = e.pageY - mainOffsetTop + 'px';
+            selectedPiece.style.left = posX;
+            selectedPiece.style.top = posY;
+        }
+    })
+
+    addEventListener("wheel", function(e) {
+        if (selectedPiece) {
+            if (e.deltaY < 0) {
+                rotationNumber = rotationNumber + 10;
+                selectedPiece.style.transform = `rotate(${rotationNumber}deg)`;
+            } else {
+                rotationNumber = rotationNumber - 10;
+                selectedPiece.style.transform = `rotate(${rotationNumber}deg)`;
+            }
+        }
+    })
+
+    // Reponsive puzzle pieces location
+    let marginLeft = 550;
+    let marginTop = 100;
+    let piecesWrapper = document.querySelector("#puzzle-pieces-wrapper");
+    let mainOffsetLeft = document.querySelector("#puzzle-container").offsetLeft + marginLeft;
+    let mainOffsetTop = document.querySelector("#puzzle-container").offsetTop + marginTop;
+    piecesWrapper.style.left = mainOffsetLeft + 'px';
+    piecesWrapper.style.top = mainOffsetTop + 'px';
+
+    addEventListener("resize", function() {
+        mainOffsetLeft = document.querySelector("#puzzle-container").offsetLeft + marginLeft;
+        piecesWrapper.style.left = mainOffsetLeft + 'px';
+    })
 
 })

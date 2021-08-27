@@ -5,4 +5,14 @@ $(function () {
         $.getScript("js/header.js");
     });
 
+    // Slick slider
+    $(".front-banners").slick({
+        arrows: true,
+        dots: true,
+        infinite: true,
+        speed: 700,
+        autoplay: true,
+        autoplaySpeed: 5000,
+    })
+
 });
