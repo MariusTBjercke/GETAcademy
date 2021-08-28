@@ -66,14 +66,14 @@ $(function() {
         ];
         bitcoinObjects = [
             {
-                x: 357,
-                y: 320,
+                x: 280,
+                y: 290,
                 width: 25,
                 height: 25
             },
             {
-                x: 535,
-                y: 280,
+                x: 400,
+                y: 290,
                 width: 25,
                 height: 25
             },
