@@ -5,10 +5,15 @@ $(function () {
         $.getScript("js/header.js");
     });
 
+    // Include footer.html and script in <footer> tag
+    $("footer").load("footer.html", function () {
+        $.getScript("js/footer.js");
+    });
+
     // Slick slider
     if ($(".front-banners").length) {
         $(".front-banners").slick({
-            arrows: true,
+            arrows: false,
             dots: true,
             infinite: true,
             speed: 700,

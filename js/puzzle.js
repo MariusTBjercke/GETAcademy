@@ -110,14 +110,16 @@ $(function() {
         });
     }
 
-    addEventListener("mousemove", function(e) {
+    function movePuzzlePiece(e) {
         if (selectedPiece) {
             let posX = e.pageX - mainOffsetLeft + 'px';
             let posY = e.pageY - mainOffsetTop + 'px';
             selectedPiece.style.left = posX;
             selectedPiece.style.top = posY;
         }
-    })
+    }
+
+    addEventListener("mousemove", movePuzzlePiece, false);
 
     addEventListener("wheel", function(e) {
         if (selectedPiece) {
