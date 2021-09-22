@@ -147,4 +147,8 @@ $(function() {
         piecesWrapper.style.left = mainOffsetLeft + 'px';
     })
 
+    $('#reset').on("click", function() {
+        location.href = "puzzle.html";
+    })
+
 })
