@@ -11,7 +11,7 @@ $(function() {
     canvas.height = 600;
 
     var background = new Image();
-    background.src = "img/magic-cliffs/clouds.png";
+    background.src = "img/js-game/magic-cliffs/clouds.png";
 
     const startGameBtn = document.querySelector('#startGameBtn');
 
@@ -27,8 +27,10 @@ $(function() {
     const playerSpeed = 0.2;
     var playerJumpForce = 25;
     var playerStance = 0;
+    var goombaStance = 0;
     var walkInterval;
     var timer = false;
+    var goombaTimer = false;
     var move;
     var faceLeft = false;
     var faceRight = true;
@@ -55,13 +57,13 @@ $(function() {
         projectiles = [];
         enemyObjects = [
             {
-                "x": 420,
-                "y": 494,
-                "width": 98,
-                "height": 76,
-                "vx": enemySpeed - (enemySpeed * 2),
-                "vy": 0,
-                "health": 100
+                x: 720,
+                y: 400,
+                width: 51,
+                height: 60,
+                vx: enemySpeed - (enemySpeed * 2),
+                vy: 0,
+                health: 100
             },
         ];
         bitcoinObjects = [
@@ -84,9 +86,9 @@ $(function() {
     }
 
     let playerWalk = new Image();
-    playerWalk.src = "img/player/player-walk.png";
+    playerWalk.src = "img/js-game/player/player-walk.png";
     let playerJump = new Image();
-    playerJump.src = "img/player/player-jump.png";
+    playerJump.src = "img/js-game/player/player-jump.png";
     function drawPlayer(ctx) {
 
         var playerDrawn = false;
@@ -244,7 +246,7 @@ $(function() {
     }
 
     var bitcoinImg = new Image();
-    bitcoinImg.src = "img/coin/coin-spritesheet.png";
+    bitcoinImg.src = "img/js-game/coin/coin-spritesheet.png";
     function spawnBitcoins() {
         bitcoinObjects.forEach((bitcoin, bitcoinIndex) => {
 
@@ -277,39 +279,29 @@ $(function() {
         ctx.restore();
     }
 
-    function drawSkeleton(enemy) {
+    let goombaWalk = new Image();
+    goombaWalk.src = "img/js-game/goomba/goomba-walk.png";
+    function drawGoomba(ctx) {
 
-        // Walk left and right
-        if (enemyWalkStance === 1 && enemyStanceMode === 'walk') {
-            if (enemy.vx > 0) {
-                enemy.drawFrame1Right(ctx);
-            } else {
-                enemy.drawFrame1Left(ctx);
-            }
-        } else if (enemyWalkStance === 2 && enemyStanceMode === 'walk') {
-            if (enemy.vx > 0) {
-                enemy.drawFrame2Right(ctx);
-            } else {
-                enemy.drawFrame2Left(ctx);
-            }
-        } else if (enemyWalkStance === 3 && enemyStanceMode === 'walk') {
-            if (enemy.vx > 0) {
-                enemy.drawFrame3Right(ctx);
-            } else {
-                enemy.drawFrame3Left(ctx);
-            }
-        } else if (enemyWalkStance === 4 && enemyStanceMode === 'walk') {
-            if (enemy.vx > 0) {
-                enemy.drawFrame4Right(ctx);
-            } else {
-                enemy.drawFrame4Left(ctx);
-            }
-        }
+        enemyObjects.forEach((enemy, enemyIndex) => {
 
-        // Attack animation left and right
-        if (enemyStanceMode === 'attack') {
-            enemy.drawFrameAttackLeft1(ctx);
-        }
+            // Draw goomba sprite
+            goombaWalkData.frames.forEach((item, itemIndex) => {
+                if (enemyStanceMode === "walk" || enemyStanceMode === "attack") {
+                    if (goombaStance === itemIndex) {
+                        ctx.save();
+                        ctx.drawImage(goombaWalk, item.frame.x, item.frame.y, item.frame.w, item.frame.h, enemy.x, enemy.y, item.frame.w, item.frame.h);
+                        ctx.restore();
+                    }
+                }
+            });
+
+            if (!goombaTimer) {
+                walkInterval = setInterval(changeGoombaStance, 40);
+                goombaTimer = true;
+            }
+
+        })
 
     }
 
@@ -406,6 +398,13 @@ $(function() {
         }
     }
 
+    function changeGoombaStance() {
+        goombaStance++;
+        if (goombaStance > 30) {
+            goombaStance = 0;
+        }
+    }
+
     function drawHealthbar(x, y, percent, width, thickness) {
 
         ctx.save();
@@ -427,10 +426,7 @@ $(function() {
     }
 
     function spawnEnemies() {
-        enemyObjects.forEach((enemy, enemyIndex) => {
-            enemy = new Enemy(enemy.x, enemy.y, enemy.width, enemy.height, enemy.vx, enemy.vy, enemy.health);
-            drawSkeleton(enemy);
-        });
+        drawGoomba(ctx);
     }
 
     function calcDistance(object1, object2) {
@@ -602,7 +598,7 @@ $(function() {
             }
 
             // Enemy health bar
-            drawHealthbar(enemy.x, enemy.y - 20, enemy.health, 100, 10);
+            // drawHealthbar(enemy.x, enemy.y - 20, enemy.health, 100, 10);
 
             projectiles.forEach((projectile, projectileIndex) => {
 

@@ -165,7 +165,6 @@ main {
 footer {
     background-color: #2b2b2b;
     color: #838383;
-    padding: 20px 0 20px 0;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -174,4 +173,15 @@ footer {
 footer .wrapper {
     max-width: var(--wrapper-width);
     margin: auto;
+    padding: 40px;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 20px;
+}
+
+footer ul {
+    margin: 0;
 }
