@@ -16,7 +16,6 @@ $(function () {
     $("nav #" + page).addClass("active");
 
     // Dropdown menu START
-
     $("nav #projects, #projects-submenu").on("mouseover", function () {
         $("#projects-submenu").show();
     });
@@ -42,6 +41,5 @@ $(function () {
         });
     
     })
-
     // Dropdown menu END
 });

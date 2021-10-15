@@ -10,16 +10,20 @@ body {
 
 header {
     background-color: #2b2b2b;
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto;
+    grid-template-columns: auto;
+    justify-content: center;
 }
 
 header .logo {
     background-image: url("../img/logo.png");
     width: 131px;
     height: 45px;
-    position: absolute;
-    left: 10px;
-    top: 8px;
     opacity: .9;
+    margin: 1vh;
+    position: absolute;
 }
 
 header .logo:hover {
@@ -27,24 +31,17 @@ header .logo:hover {
     cursor: pointer;
 }
 
-@media screen and (max-width: 765px) {
-    header .logo {
-        display: none;
-    }
-}
-
 nav {
-    margin: auto;
     text-align: center;
     color: #838383;
     font-family: 'Raleway', sans-serif;
     display: flex;
-    justify-content: center;
+    transition: 1s all;
 }
 
 nav div {
     border-left: 1px solid #585858;
-    padding: 2vh;
+    padding: 3vh;
     cursor: pointer;
 }
 
@@ -107,7 +104,7 @@ nav #projects-submenu div:first-child {
 
 main {
     max-width: var(--wrapper-width);
-    margin: auto;
+    margin: auto auto;
     padding: 20px;
     font-family: 'Raleway', sans-serif;
 }
@@ -134,40 +131,77 @@ main {
     background-color: #dd7d00 !important;
 }
 
+.card-parents {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    justify-content: space-between;
+    align-items: end;
+}
+
 .flexbox-container div:nth-child(odd) {
     background-color: rgb(100, 100, 100);
 }
 
-@media screen and (max-width: 550px) {
-    .flexbox-container {
-        width: 306px;
-    }
-    .flexbox-container div {
-        width: 100px;
-        height: 100px;
-        line-height: 100px;
-        font-size: 4em;
-    }
+.card {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    max-width: 30vh;
+    background: url('../img/cards/puslespill-cardbg.png');
+    background-size: cover;
+    padding: 6rem 0 0;
+    transition: 1s all;
 }
 
-@media screen and (max-width: 400px) {
-    .flexbox-container {
-        width: 156px;
-    }
-    .flexbox-container div {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        font-size: 2em;
-    }
+.card-tic-tac-toe {
+    background: url('../img/cards/ttt-cardbg.png');
+}
+
+.card-content {
+    padding: 2em;
+    background: linear-gradient(
+        hsl(0 0% 0% / 0) 0%,
+        hsl(0 0% 0% / 1) 100%,
+        hsl(0 0% 0% / 1) 100%
+        );
+}
+
+.card-title {
+    position: relative;
+    font-weight: bold;
+    font-size: 1.1em;
+    width: max-content;
+}
+
+.card-title:after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    bottom: -5px;
+    width: calc(100% + 2em);
+    left: calc(1.8em * -1);
+    background: #dd7d00;
+}
+
+.portfolio {
+    display: grid;
+    height: 100%;
+}
+
+.portfolio-item {
+    background: #dd7d00;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 footer {
     background-color: #2b2b2b;
     color: #838383;
-    position: absolute;
     width: 100%;
-    bottom: 0;
+    margin: 20vh 0 0 0;
 }
 
 footer .wrapper {
@@ -184,4 +218,89 @@ footer .wrapper {
 
 footer ul {
     margin: 0;
+}
+
+
+@media screen and (max-width: 622px) {
+
+    .card-parents {
+        grid-template-rows: auto auto auto;
+        grid-template-columns: auto;
+    }
+
+}
+
+@media screen and (min-width: 622px) and (max-width: 720px) {
+
+    .card-parents {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+    }
+    
+    .card {
+    }
+
+}
+
+@media screen and (min-width: 700px) and (max-width: 950px) {
+    .card {
+        max-width: 22vh;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    header {
+        justify-content: center;
+        justify-items: center;
+        grid-template-columns: 100%;
+    }
+    
+    header .logo {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .flexbox-container {
+        width: 306px;
+    }
+    .flexbox-container div {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 4em;
+    }
+
+    header {
+        justify-items: normal;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    nav div {
+        border-left: 0;
+        border-bottom: 1px solid #585858;
+    }
+
+    nav div:last-child {
+        border: 0;
+    }
+    
+    nav #projects-submenu div:first-child {
+        border-top: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .flexbox-container {
+        width: 156px;
+    }
+    .flexbox-container div {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 2em;
+    }
 }
