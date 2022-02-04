@@ -54,6 +54,16 @@ $(function() {
             height: 122,
             jumping: false
         };
+
+        square = {
+            x: 300,
+            y: y,
+            vx: 0,
+            vy: 0,
+            width: 100,
+            height: 100
+        };
+
         projectiles = [];
         enemyObjects = [
             {
@@ -153,6 +163,19 @@ $(function() {
         }
 
     }
+
+    // function drawSquare(ctx) {
+    //     ctx.save();
+    //     ctx.fillStyle = "red";
+    //     ctx.fillRect(square.x, square.y, square.width, square.height);
+    //     ctx.restore();
+    // }
+
+    // function updateSquare() {
+    //     if (keyRight) {
+    //         square.x += player.vx;
+    //     }
+    // }
 
     function drawHud() {
         ctx.save();
@@ -643,6 +666,13 @@ $(function() {
         // Spawn player
         drawPlayer(ctx);
 
+        // Square
+        // drawSquare(ctx);
+        // updateSquare();
+
+        // Player movement
+        updatePlayer();
+
         // Generate world
         world1();
         updateWorld();
@@ -656,12 +686,6 @@ $(function() {
         // Spawn enemies in world
         spawnEnemies();
         updateEnemy();
-
-        // Player animations on movement
-        // playerAnimator(ctx);
-
-        // Player movement
-        updatePlayer();
 
         // Particles from enemy explosion
         particles.forEach((particle, index) => {
