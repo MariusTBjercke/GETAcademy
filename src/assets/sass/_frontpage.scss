@@ -1,11 +1,56 @@
 main {
+    display: grid;
+    gap: 40px;
+
     .about-front {
-        padding: 40px 0;
-        line-height: 1.5em;
+        padding: 60px 0;
+        background-image: url('../img/mountains.png');
+        background-size: cover;
+
+        .container {
+
+            .row {
+                
+                .col {
+                    background-color: rgba(0, 0, 0, 0.8);
+                    padding: 40px;
+                    border-radius: 10px;
+                    color: white;
+                }
+            }
+        }
+
+        .about-text {
+            max-width: 810px;
+
+            h5 {
+                line-height: 1.5em;
+                margin-bottom: 20px;
+
+                span {
+                    font-weight: bold;
+                }
+            }
+
+            a {
+                background-color:#dd7d00;
+                padding: 10px 20px;
+                color: rgb(0, 0, 0);
+                text-decoration: none;
+                border-radius: 10px;
+                margin-right: 6px;
+
+                &:hover {
+                    color: #ececec;
+                    padding: 12px 22px;
+                    transition: .5s;
+                }
+            }
+        }
 
         h2 {
             font-weight: bold;
-            color: #ff9100;
+            color: #dd7d00;
         }
     }
 
@@ -16,5 +61,9 @@ main {
         &:hover {
             color: #c77100;
         }
+    }
+
+    .card-text {
+        min-height: 48px;
     }
 }

@@ -8,12 +8,15 @@ header {
         width: 130px;
         height: 35px;
         position: absolute;
-        left: 10px;
+        left: 40px;
         opacity: .9;
 
         &:hover {
+            background-image: url("../img/logo-hover.png");
             opacity: 1;
             cursor: pointer;
+            transform: scale(1.03);
+            transition: .5s;
         }
     }
 
@@ -78,6 +81,12 @@ header {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header .logo {
+        left: 10px;
     }
 }
 
