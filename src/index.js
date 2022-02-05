@@ -5,6 +5,8 @@ import '@fortawesome/fontawesome-free/js/all.js';
 // CSS
 import "./assets/sass/main.scss";
 
+// TODO: Fix onload issue with navigation item width
+
 $(function () {
     $(".logo").on("click", function () {
         window.location.href = "index.html";
@@ -34,7 +36,6 @@ $(function () {
 
     let navHeight = $("nav #projects").outerHeight();
     let navWidth = $("nav #projects").outerWidth() - 1;
-
     $("#projects-submenu").css({
         "margin-top": navHeight,
         "width": navWidth

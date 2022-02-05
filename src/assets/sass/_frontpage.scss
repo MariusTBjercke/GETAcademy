@@ -1,0 +1,20 @@
+main {
+    .about-front {
+        padding: 40px 0;
+        line-height: 1.5em;
+
+        h2 {
+            font-weight: bold;
+            color: #ff9100;
+        }
+    }
+
+    a {
+        color: #ff9100;
+        text-decoration: none;
+
+        &:hover {
+            color: #c77100;
+        }
+    }
+}

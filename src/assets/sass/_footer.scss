@@ -1,0 +1,33 @@
+footer {
+    background-color: #2b2b2b;
+    color: #838383;
+    width: 100%;
+    margin: 20vh 0 0 0;
+    position: absolute;
+    bottom: 0;
+
+    ul {
+        margin: 0;
+    }
+
+    a {
+        color: #dd7d00;
+        text-decoration: none;
+
+        &:hover {
+            color: #b96900;
+        }
+    }
+
+    .wrapper {
+        max-width: var(--wrapper-width);
+        margin: auto;
+        padding: 40px;
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        align-items: center;
+        row-gap: 20px;
+    }
+}
