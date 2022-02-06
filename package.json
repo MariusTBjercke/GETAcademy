@@ -19,6 +19,7 @@
   "homepage": "https://github.com/MariusTBjercke/getacademy#readme",
   "devDependencies": {
     "css-loader": "^6.6.0",
+    "file-loader": "^6.2.0",
     "sass": "^1.49.7",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",

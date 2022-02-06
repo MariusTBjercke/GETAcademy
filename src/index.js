@@ -1,6 +1,9 @@
 // JavaScript
 import 'bootstrap';
-import '@fortawesome/fontawesome-free/js/all.js';
+import '@fortawesome/fontawesome-free/js/all';
+import './assets/js/mariojs/game';
+import './assets/js/mariojs/game-classes';
+import './assets/js/mariojs/game-anim-data';
 
 // CSS
 import "./assets/sass/main.scss";
@@ -56,7 +59,7 @@ $("#about").on("click", function () {
 });
 
 $("#mariojs").on("click", function () {
-    window.location.href = "project.php?id=" + "mariojs";
+    window.location.href = "/mariojs";
 });
 
 $("#tictactoe").on("click", function () {

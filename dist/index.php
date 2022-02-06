@@ -40,7 +40,7 @@ include 'header.php';
                             <h5 class="card-title">Super Mario</h5>
                             <h6 class="card-subtitle mb-2 text-muted">JavaScript (Canvas)</h6>
                             <p class="card-text">Et veldig enkelt platformer-spill laget med vanilla JavaScript.</p>
-                            <a href="#" class="card-link">Besøk</a>
+                            <a href="project.php" class="card-link">Besøk</a>
                         </div>
                     </div>
                 </div>
