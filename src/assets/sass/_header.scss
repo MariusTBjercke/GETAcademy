@@ -1,7 +1,9 @@
 header {
+    position: relative;
     background-color: #2b2b2b;
     display: grid;
     align-items: center;
+    box-shadow: 0px 1px 8px 0px #000;
 
     .logo {
         background-image: url("../img/logo.png");

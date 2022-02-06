@@ -6,28 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="favicon.png">
-    <title>Marius Toresen Bjercke | Portefølje</title>
+    <title>Forside | Marius Toresen Bjercke</title>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo"></div>
-        <nav>
-            <div id="home" class="active">HJEM<i class="fas fa-lg fa-home"></i></div>
-            <div id="about">OM MEG<i class="fas fa-lg fa-address-card"></i></div>
-            <div id="projects">
-                <span>PROSJEKTER<i class="fas fa-lg fa-gamepad"></i></span>
-                <div id="projects-submenu">
-                    <div>Mario JS</div>
-                    <div>Tic Tac Toe</div>
-                    <div>Kalkulator</div>
-                    <div>Puslespill</div>
-                </div>
-            </div>
-            <div id="contact">KONTAKT<i class="fas fa-lg fa-envelope"></i></div>
-        </nav>
-    </header>
+    <?php
+    include 'header.php';
+    ?>
 
     <main>
         <article class="about-front">
@@ -39,10 +25,10 @@
                             HTML,
                             CSS, JavaScript, Vue.js og Node.js. Har noe tidligere erfaring med PHP. Ved siden av
                             programmeringsspråk så lærer vi om diverse nøkkelkompetanser der <span>growth mindset</span>
-                            står sterkt i fokus.</h5>
+                            står i sterk fokus.</h5>
                         <p>
-                            <a href="https://github.com/MariusTBjercke" target="_blank">GitHub</a>
-                            <a href="#">Prosjekter</a>
+                            <a href="https://github.com/MariusTBjercke" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-project-diagram"></i> Prosjekter</a>
                         </p>
                     </div>
                 </div>
@@ -89,12 +75,9 @@
         </article>
     </main>
 
-    <footer>
-        <div class="wrapper">
-            <div>IT-student hos <a href="https://getacademy.no">GET Academy</a>.</div>
-            <div>Copyright © Marius T. Bjercke</div>
-        </div>
-    </footer>
+    <?php
+    include 'footer.php';
+    ?>
 
     <script src="bundle.js"></script>
 </body>
