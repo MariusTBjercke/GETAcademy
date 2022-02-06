@@ -6,6 +6,10 @@ body, html {
     font-family: 'Raleway', sans-serif;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 .profile {
     background: url('../img/profile.png');
     background-size: contain;
