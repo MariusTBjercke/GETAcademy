@@ -23,5 +23,7 @@ body {
 }
 
 main {
+    display: grid;
+    gap: 40px;
     padding-bottom: 70px; // Footer spacing
 }

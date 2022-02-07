@@ -1,7 +1,7 @@
 main {
-    .about-front {
-        padding: 60px 0;
-        background-image: url('../img/code.png');
+    .contact {
+        padding: 100px 0;
+        background-image: url('../img/contact.jpg');
         background-size: cover;
 
         .container {
@@ -29,7 +29,7 @@ main {
                 }
             }
 
-            .about-btns {
+            .contact-btns {
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
@@ -94,65 +94,6 @@ main {
                     opacity: 1;
                 }
             }
-        }
-    }
-
-    a {
-        color: #ff9100;
-        text-decoration: none;
-
-        &:hover {
-            color: #c77100;
-        }
-    }
-
-    .cards {
-        .card {
-            margin-bottom: 10px;
-        }
-
-        .card-text {
-            min-height: 48px;
-        }
-
-        img {
-            max-height: 200px;
-            object-fit: cover;
-        }
-
-        .bottom {
-            object-position: bottom;
-        }
-
-        .top {
-            object-position: top;
-        }
-
-        .center {
-            object-position: center;
-        }
-
-        .bottom {
-            object-position: bottom;
-        }
-
-        .btn {
-            background-color:#dd7d00;
-            border-color:#dd7d00;
-            color: black;
-            min-width: 120px;
-
-            &:hover {
-                color: white;
-                transition: .5s;
-                transform: scale(1.05);
-            }
-        }
-
-        .card-btns {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
         }
     }
 }
