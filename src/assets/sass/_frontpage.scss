@@ -32,18 +32,45 @@ main {
                 }
             }
 
-            a {
-                background-color:#dd7d00;
-                padding: 10px 20px;
-                color: rgb(0, 0, 0);
-                text-decoration: none;
-                border-radius: 10px;
-                margin-right: 6px;
+            .about-btns {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                width: fit-content;
+                align-items: flex-start;
 
-                &:hover {
-                    color: #ececec;
-                    padding: 12px 22px;
-                    transition: .5s;
+                a {
+                    background-color:#dd7d00;
+                    padding: 10px 20px;
+                    color: rgb(0, 0, 0);
+                    text-decoration: none;
+                    border-radius: 10px;
+    
+                    &:hover {
+                        color: #ececec;
+                        transform: scale(1.1);
+                        transition: .5s;
+                    }
+                }
+
+                @media screen and (max-width: 500px) {
+                    flex-direction: column;
+
+                    a {
+                        min-width: 111px;
+                        padding: 7px 12px;
+                        font-size: .9em;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 500px) {
+                h2 {
+                    font-size: 1.4em;
+                }
+
+                h5 {
+                    font-size: 1em;
                 }
             }
         }
@@ -82,7 +109,53 @@ main {
         }
     }
 
-    .card-text {
-        min-height: 48px;
+    .cards {
+        .card {
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            min-height: 48px;
+        }
+
+        img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+        .bottom {
+            object-position: bottom;
+        }
+
+        .top {
+            object-position: top;
+        }
+
+        .center {
+            object-position: center;
+        }
+
+        .bottom {
+            object-position: bottom;
+        }
+
+        .btn {
+            background-color:#dd7d00;
+            border-color:#dd7d00;
+            color: black;
+            min-width: 120px;
+
+            &:hover {
+                color: white;
+                transition: .5s;
+                transform: scale(1.05);
+            }
+        }
+
+        .card-btns {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
     }
 }

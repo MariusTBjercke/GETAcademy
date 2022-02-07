@@ -5,8 +5,6 @@ import '@fortawesome/fontawesome-free/js/all';
 // CSS
 import "./assets/sass/main.scss";
 
-// TODO: Fix onload issue with navigation item width
-
 $("nav div").on("mouseenter", function () {
     $(this).hasClass("active") ? '' : $(this).removeClass("active");
 });
@@ -24,16 +22,18 @@ $("nav #projects, #projects-submenu").on("mouseleave", function () {
     $("#projects-submenu").hide();
 });
 
-let navHeight = $("nav #projects").outerHeight();
-let navWidth = $("nav #projects").outerWidth() - 1;
-$("#projects-submenu").css({
-    "margin-top": navHeight,
-    "width": navWidth
+$(function () {
+    let navHeight = $("nav #projects").outerHeight();
+    let navWidth = $("nav #projects").outerWidth() - 1;
+    $("#projects-submenu").css({
+        "margin-top": navHeight,
+        "width": navWidth
+    });
 });
 
 $(window).on("resize", function () {
-    navHeight = $("nav #projects").outerHeight();
-    navWidth = $("nav #projects").outerWidth() - 1;
+    let navHeight = $("nav #projects").outerHeight();
+    let navWidth = $("nav #projects").outerWidth() - 1;
     $("#projects-submenu").css({
         "margin-top": navHeight,
         "width": navWidth
