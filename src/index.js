@@ -1,9 +1,6 @@
 // JavaScript
 import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/all';
-import './assets/js/mariojs/game';
-import './assets/js/mariojs/game-classes';
-import './assets/js/mariojs/game-anim-data';
 
 // CSS
 import "./assets/sass/main.scss";
@@ -41,8 +38,7 @@ $(window).on("resize", function () {
         "margin-top": navHeight,
         "width": navWidth
     });
-
-})
+});
 // Dropdown menu END
 
 // Navigation START

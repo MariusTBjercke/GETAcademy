@@ -51,6 +51,25 @@ main {
         h2 {
             font-weight: bold;
             color: #dd7d00;
+
+            &::after {
+                content: '';
+                width: 16px;
+                height: 4px;
+                background: #dd7d00;
+                transform: translate(2px, 1px);
+                opacity: 0;
+                display: inline-block;
+                animation: blink 1s linear infinite alternate;
+            }
+
+            @keyframes blink {
+                from {
+                    opacity: 0;
+                } to {
+                    opacity: 1;
+                }
+            }
         }
     }
 
