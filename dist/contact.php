@@ -1,5 +1,5 @@
 <?php
-$page = 'Kontakt meg';
+$page = 'Kontakt';
 include 'header.php';
 ?>
 

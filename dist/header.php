@@ -36,6 +36,6 @@ function isActive($pageName) {
                     <div id="puzzle">Puslespill</div>
                 </div>
             </div>
-            <div id="contact">KONTAKT<i class="fas fa-lg fa-envelope"></i></div>
+            <div id="contact" <?php isActive('Kontakt'); ?>>KONTAKT<i class="fas fa-lg fa-envelope"></i></div>
         </nav>
 </header>
